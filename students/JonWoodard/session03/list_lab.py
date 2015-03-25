@@ -6,3 +6,8 @@ new_fruit = raw_input("Please enter a new fruit-->")
 fruit.append(new_fruit)
 print(fruit)
 fruit_number = raw_input("Please enter a number-->")
+print(fruit_number)
+if fruit_number >= len(fruit):
+    print(fruit[fruit_number])
+else:
+    print("We don't have that many kinds of fruit. Enter a smaller number")
