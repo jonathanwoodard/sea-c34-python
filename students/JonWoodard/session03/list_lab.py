@@ -18,3 +18,10 @@ print(fruit)
 for item in fruit:
     if item[0] == "P":
         print(item)
+
+print(fruit)
+fruit.pop(-1)
+print(fruit)
+remove_fruit = raw_input("Which fruit would you like to remove? -->")
+fruit.remove(remove_fruit)
+
