@@ -4,6 +4,7 @@
 fruit = ["Apples", "Pears", "Oranges", "Peaches"]
 print(fruit)
 new_fruit = raw_input("Please enter a new fruit-->")
+new_fruit = new_fruit.capitalize()
 fruit.append(new_fruit)
 print(fruit)
 fruit_number = int(raw_input("Please enter a number-->"))
@@ -28,22 +29,36 @@ fruit.pop(-1)
 print(fruit)
 fruit_2 = fruit * 2
 remove_fruit = raw_input("Which fruit would you like to remove? -->")
+remove_fruit = remove_fruit.capitalize()
 if remove_fruit not in fruit_2:
     print("We don't have that fruit, try again")
     remove_fruit = raw_input("Which fruit would you like to remove? -->")
+    remove_fruit.capitalize
 while remove_fruit in fruit_2:
     fruit_2.remove(remove_fruit)
 print(fruit_2)
 
 # section 3
 
-for item in fruit:
-    like_fruit = raw_input("Do you like " + item.lower + "? -->")
-    while like_fruit != "yes" or "no":
+y = len(fruit)
+for x in range(y):
+    item = fruit[x]
+    item = item.lower()
+    question = "Do you like " + str(item) + "? -->"
+
+    like_fruit = raw_input(question)
+    while like_fruit != "yes" and like_fruit != "no":
         print('Please answer "yes" or "no"')
-        like_fruit = raw_input("Do you like " + item.lower + "? -->")
-    if like_fruit == "no":
-        fruit.remove(item)
+        like_fruit = raw_input(question)
+    if like_fruit == "yes":
+        x += 1
+    else:
+        fruit.remove(fruit[x])
+        y = len(fruit)
+        x -= 1
+
+# this loop is not working properly
+
 print(fruit)
 
 # section 4
