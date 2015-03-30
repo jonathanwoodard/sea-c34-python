@@ -4,3 +4,9 @@ def safe_input():
     rather than raising exceptions.
     """
 
+    out = raw_input('Prompt for user input ->')
+    while out == EOFError:
+        return 'eof'
+    while out == KeyboardInterrupt:
+        return 'int'
+    print(out)
