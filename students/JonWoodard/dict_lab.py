@@ -22,5 +22,11 @@ for int in range(16):
 dict_2 = dict(zip(list_1, list_2))
 print(dict_2)
 
+# section 3: create a new dictionary from 1, replace values with number of 'a's
+count_a = []
+for item in values:
+    count_a.append(item.count('a'))
+
+dict_3 = dict(zip(keys, count_a))
 
 
