@@ -51,3 +51,8 @@ s4 <= s2
 
 
 # section 5: create sets from strings
+s5 = set('Python')
+s5.add('i')
+fs1 = frozenset('marathon')
+s5.union(fs1)
+s5.intersection(fs1)
