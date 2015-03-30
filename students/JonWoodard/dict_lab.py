@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # create a dictionary and print it
 dict_1 = {'name': 'Chris', 'city': 'Seattle', 'cake': 'Chocolate'}
 print(dict_1)
@@ -30,3 +31,23 @@ for item in values:
 dict_3 = dict(zip(keys, count_a))
 
 
+# section 4: create sets of numbers divisible by 2,3,4
+s2 = set()
+s3 = set()
+s4 = set()
+for int in range(21):
+    if int % 2 == 0:
+        s2.add(int)
+    if int % 3 == 0:
+        s3.add(int)
+    if int % 4 == 0:
+        s4.add(int)
+print(s2)
+print(s3)
+print(s4)
+
+s3 <= s2
+s4 <= s2
+
+
+# section 5: create sets from strings
