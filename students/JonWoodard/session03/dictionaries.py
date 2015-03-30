@@ -8,8 +8,15 @@ def dictionary_1():
     how_many = [3, 2, 11]
     in_the_zoo = {}
 
-    in_the_zoo = dict(zip(zoo_animals, how_many))
+    in_the_zoo = dict(zip(zoo_animals, how_many))   
     print(in_the_zoo)
+
+    in_the_zoo.update({"lemurs": 14})
+    print(in_the_zoo)
+
+    in_the_zoo.update([("sloths", 2), ])
+    print(in_the_zoo)
+
 
 def dictionary_2(quest2):
     """
@@ -17,6 +24,9 @@ def dictionary_2(quest2):
     Question 2:
         What types of things can be put in a dictionary?
     """
+    in_the_zoo = {}
+    in_the_zoo.update({"unicorns": 3.14})
+
 
 def dictionary_3(quest3):
     """
@@ -24,6 +34,10 @@ def dictionary_3(quest3):
     Question 3:
         How do you access the items in a dictionary?
     """
+    in_the_zoo = {"lions":3, "tigers": 2, "monkeys": 11, "lemurs": 14}
+    in_the_zoo["lions"]
+    in_the_zoo.get("lemurs")
+
 
 def dictionary_4(quest4):
     """
