@@ -14,6 +14,13 @@ def mail_room(user_input):
         "list" prints a list of names and returns to original prompt
     """
 # create a dictionary, d = {}
+d = {}
+ls1 = ['Bob Smith', 'Bob Jones', 'Luther Smith'] # donor names
+ls2 = [100, 125, 200] # amounts
+d = dict(zip(ls1, ls2))
+keys = d.keys
+values = d.values
+v = dict(zip(values, keys))
 # create a second dictionary, v = {} from d, with key/value pairs reversed
 # populate dictionary with name, timestamp keys, amount values
 # if raw_input == 'q'
