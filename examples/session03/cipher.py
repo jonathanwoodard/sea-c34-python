@@ -5,11 +5,14 @@ alphabet = "abcdefghijklmnopqrstuvwxyz "
 alphabet_list = [alphabet[i] for i in range(len(alphabet))]
 #alphabet_list = list(alphabet)
 
+#print(alphabet_list)
+6d22b5c1ca727e30378ed07ffb7a9fc067aa46d3
 
 message_text = "gfzljqgfzljqewqvqhfzyfj"
 
 cipher_list = ['v', 'y', 'h', 'l', 'a', 'n', 'i', 'g', 'e', 'd', 'k', 'c', 'w', ' ', 'f', 's', 'm', 'p', 'r', 't', 'o', 'u', 'z', 'b', 'j', 'x', 'q'] 
 # random.shuffle(cipher_list)
+
 
 cipher_text = ""
 
@@ -27,4 +30,17 @@ for y in new_cipher_text:
     decrypted_char = alphabet_list[index]
     decrypted_text += decrypted_char
 print decrypted_text
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 6d22b5c1ca727e30378ed07ffb7a9fc067aa46d3
 
