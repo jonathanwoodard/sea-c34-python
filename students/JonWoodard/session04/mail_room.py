@@ -92,7 +92,7 @@ def report():
     print(report_list)
 
 
-def mail_room(user_input):
+if __name__ == '__main__':
     """
     This will define a series of actions to be taken in the mail room.
     Args:
@@ -111,17 +111,18 @@ def mail_room(user_input):
     print(u'To Create a Report, enter "2"')
     print(u'To see a list of donors, press "L"')
     print(u'To exit, press "Q"')
-    prompt = u'Please make your selection now: ->'
-    user_input = safe_input(prompt)
-    if user_input == 1:
-        donor_name()
-    elif user_input == 2:
+    user_input = safe_input(u'Please make your selection now: ->')
+    if user_input == '1':
+        donor_name(safe_input(u'Enter the Full Name of the Donor: ->'))
+    elif user_input == '2':
         report()
     elif user_input.lower == 'l':
         print(donors)
-        mail_room(user_input)
-    elif user_input.lower == 'q':
-        break
+
+#    elif user_input.lower == 'q':      This is giving me problems right now
+#        break
+    else:
+        __name__ == '__main__'
 
 # if raw_input == 'q'
 #   call function(prompt)
