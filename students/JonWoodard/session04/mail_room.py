@@ -5,13 +5,14 @@ d = {}
 ls1 = ['Felix Hernandez', 'Hisashi Iwakuma', 'Taijuan Walker',
        'Mike Zunino', 'Robinson Cano', 'Brad Miller', 'Kyle Seager']
 # amounts
-ls2 = [[1700], [900], [1600], [150], [1100], [250], [750]]
+ls2 = [[1700.00], [900.00], [1600.00], [150.00], [1100.00], [250.00], [750.00]]
 d = dict(zip(ls1, ls2))
-donors = []
-amounts = []
-for key in d:
-    donors.append(key)
-    amounts.append(d[key])
+# donors = []
+# amounts = []
+# for key in d:
+#     donors.append(key)
+#     amounts.append(d[key])
+
 
 # create a function to prompt user for data
 def safe_input(prompt):
@@ -19,13 +20,16 @@ def safe_input(prompt):
     """
     This function will take raw user input and return 'None'
     rather than raising exceptions.
+    Args:
+        prompt = 'Prompt user for desired input'
+    Returns:
+        input or 'None'
     """
-    prompt = 'Prompt user for desired input'
     try:
         usr_in = raw_input(prompt)
     except:
         EOFError or KeyboardInterrupt
-        return 'None'
+        return "None"
     else:
         return usr_in
 
@@ -33,43 +37,56 @@ def safe_input(prompt):
 # create function to ask for donor name
 def donor_name(name):
     """
-    This function will take user input and create a thank you email
+    This function will check to see if a name is in the dictionary.
+    If yes, prompt for donation amount.
+    If no, add, then prompt for amount.
     """
-    prompt = u'Enter the Full Name of the Donor: ->'
-    name = safe_input(prompt)
+    # prompt = u'Enter the Full Name of the Donor: ->'
+    # name = safe_input(prompt)
     if name in d:
-        donation_amount(name)
+        pass
+        # donation_amount(safe_input)
     else:
-        d.update(name, ([]))
+        d[name] = []
 
 
-def donation_amount(name):
+def donation_amount(name, amount):
     """
     This function will determine whether the value entered is a number
     If the value is a number, an email will be generated
     Otherwise it will return the user to the donation_amount function
     """
-    prompt = u'Please enter the donation amount: ->'
-    amount = safe_input(prompt)
-    if amount is float:
+    # prompt = u'Please enter the donation amount: ->'
+    # amount = safe_input(prompt)
+    if amount is float or int:
         if amount in d[name]:
-            email_text()
+            pass
+            # email_text()
+        else:
+            d[name].append
     else:
         print('That does not appear to be a valid number. Try again')
-        donation_amount()
+        donation_amount(name, amount)
 
 
-def email_text(amount, name):
+def email_text(name, amount):
     """
     This function will take the user entered name and donation amount
     to generate a thank you email.
-
+    Args:
+        name: name entered in safe_input.
+        amount: float entered in safe_input.
+    Returns:
+        msg
     """
-    msg = u"Dear {**}, The Royal Society for Putting Things on top of" \
-        "Other Things would like to sincerely thank you for your generous" \
-        "donation of ${*}. This kind donation will enable us to put many" \
-        "more Things on top of Other Things in the coming year."\
-        .format(amount, name)
+    msg = (
+        u"Dear {},\n"
+        u"The Royal Society for Putting Things on top of Other \n"
+        u"Things would like to sincerely thank you for your \n"
+        u"generous donation of ${}. This kind donation will enable \n"
+        u"us to put many more Things on top of Other Things in the \n"
+        u"coming year. \n\n"
+        ).format(amount, name)
     print(msg)
 
 
@@ -78,7 +95,7 @@ def report():
     This function will generate a report of donors and donations.
     The report will contain 'name', total of all donations, number
     of donations, and the average donation value.
-    The report will be sorted by the donation total, and formatted so 
+    The report will be sorted by the donation total, and formatted so
     that the values are neatly alligned in rows.
     """
     report_list = []
@@ -86,9 +103,9 @@ def report():
         tot = sum(d[key])
         n = len(d[key])
         average = tot / n
-        report_entry = (d[key], tot, n, average)
+        report_entry = (key, tot, n, average)
         report_list.append(report_entry)
-    report_list.sort(2)
+    sorted([report_list], key=lambda x: x[1], reverse=True)
     print(report_list)
 
 
@@ -106,23 +123,49 @@ if __name__ == '__main__':
         "Create a Report" generates a formated list
         "list" prints a list of names and returns to original prompt
     """
-    print(u'Please select from the following options:')
-    print(u'To send a thank you, enter "1"')
-    print(u'To Create a Report, enter "2"')
-    print(u'To see a list of donors, press "L"')
-    print(u'To exit, press "Q"')
-    user_input = safe_input(u'Please make your selection now: ->')
-    if user_input == '1':
-        donor_name(safe_input(u'Enter the Full Name of the Donor: ->'))
-    elif user_input == '2':
-        report()
-    elif user_input.lower == 'l':
-        print(donors)
+    while True:
+        user_input = safe_input(
+            u"\nPlease select from the following options:\n"
+            u"To send a thank you, enter '1'\n"
+            u"To Create a Report, enter '2'\n"
+            u"To see a list of donors, press 'L'\n"
+            u"To exit, press 'Q'\n"
+        )
+        if user_input.lower() == u'q':
+                break
+        elif user_input == '1':
+            while True:
+                name = safe_input(
+                    u"\nEnter the Full Name of the Donor: \n ->"
+                )
+                if name.lower() == u"l":
+                    for key in d:
+                        print(key)
+                elif name.lower() == u"q":
+                    break
+                else:
+                    if name not in d:
+                        d[name] = []
+                        False
+                    else:
+                        amount = safe_input(
+                            u"\nPlease enter the donation amount: \n"
+                        )
+                        False
+        elif user_input == '2':
+                report()
+        elif user_input.lower() == 'l':
+            for key in d:
+                print(key)
+        else:
+            print(
+                u"\nThat is not a valid entry\n"
+                u"Please try again\n"
+            )
+            # return True
 
-#    elif user_input.lower == 'q':      This is giving me problems right now
-#        break
-    else:
-        __name__ == '__main__'
+
+#            __name__ == '__main__'
 
 # if raw_input == 'q'
 #   call function(prompt)
