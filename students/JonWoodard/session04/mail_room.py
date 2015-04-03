@@ -105,8 +105,20 @@ def report():
         average = tot / n
         report_entry = (key, tot, n, average)
         report_list.append(report_entry)
-    sorted([report_list], key=lambda x: x[1], reverse=True)
-    print(report_list)
+    report_list.sort(key=lambda report_entry: report_entry[1], reverse=True)
+    print(
+        "{:22s} {:16s} {:20s} {:20s}\n".format(
+            "Name", "Total Donations", "Number of Donations",
+            "Average Donation"
+        )
+    )
+    for i in report_list:
+        print(
+            "{:22s} {:<16,.2f} {:<20d} {:<20,.2f}".format(
+                i[0], i[1], i[2], i[3]
+            )
+        )
+    print("\n\n")
 
 
 if __name__ == '__main__':
