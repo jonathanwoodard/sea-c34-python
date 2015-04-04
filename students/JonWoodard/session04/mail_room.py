@@ -73,7 +73,7 @@ def donation_amount(name, amount):
     return
 
 
-def email_text(amount, name):
+def email_text(name, amount):
     """
     This function will take the user entered name and donation amount
     to generate a thank you email.
@@ -84,14 +84,14 @@ def email_text(amount, name):
         msg
     """
     msg = (
-        u"Dear {},\n"
+        u"\n\nDear {},\n"
         u"The Royal Society for Putting Things on top of Other \n"
         u"Things would like to sincerely thank you for your generous\n"
         u"donation of ${:,.2f}. This kind donation will enable \n"
         u"us to put many more Things on top of Other Things in the \n"
         u"coming year. \n\nSincerly, \n\nSimon Zinc Trumpet Harris, Esq. \n"
         u"(Deceased)"
-        ).format(name, amount)
+        ).format(name, float(amount))
     print(msg)
 
 
@@ -175,7 +175,7 @@ if __name__ == '__main__':
                             u"\nPlease enter the donation amount: \n-> "
                             )
                     donation_amount(name, amount)
-                    email_text(amount, name)
+                    email_text(name, amount)
         elif user_input == '2':
             report()
         elif user_input.lower() == 'l':
