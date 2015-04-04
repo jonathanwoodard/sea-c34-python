@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # create a dictionary, d = {}
+from __future__ import print_function
 d = {}
 # donors
 ls1 = ['Felix Hernandez', 'Hisashi Iwakuma', 'Taijuan Walker',
@@ -35,19 +36,23 @@ def safe_input(prompt):
 
 
 # create function to ask for donor name
+"""
 def donor_name(name):
-    """
+    """"""
     This function will check to see if a name is in the dictionary.
     If yes, prompt for donation amount.
     If no, add, then prompt for amount.
-    """
+    """"""
     # prompt = u'Enter the Full Name of the Donor: ->'
     # name = safe_input(prompt)
     if name in d:
-        pass
+        print(name)
         # donation_amount(safe_input)
     else:
         d[name] = []
+        for item in d:
+            print(item)
+"""
 
 
 def donation_amount(name, amount):
@@ -56,20 +61,19 @@ def donation_amount(name, amount):
     If the value is a number, an email will be generated
     Otherwise it will return the user to the donation_amount function
     """
-    # prompt = u'Please enter the donation amount: ->'
-    # amount = safe_input(prompt)
-    if amount is float or int:
+    try:
+        float(amount)
         if amount in d[name]:
-            pass
-            # email_text()
+            print(u"This donation has already been included. \n")
         else:
-            d[name].append
-    else:
-        print('That does not appear to be a valid number. Try again')
-        donation_amount(name, amount)
+            d[name].append(float(amount))
+    except ValueError:
+        print(u"That does not appear to be a valid number.\n"
+              u"Try again. \n ->")
+    return
 
 
-def email_text(name, amount):
+def email_text(amount, name):
     """
     This function will take the user entered name and donation amount
     to generate a thank you email.
@@ -82,11 +86,12 @@ def email_text(name, amount):
     msg = (
         u"Dear {},\n"
         u"The Royal Society for Putting Things on top of Other \n"
-        u"Things would like to sincerely thank you for your \n"
-        u"generous donation of ${}. This kind donation will enable \n"
+        u"Things would like to sincerely thank you for your generous\n"
+        u"donation of ${:,.2f}. This kind donation will enable \n"
         u"us to put many more Things on top of Other Things in the \n"
-        u"coming year. \n\n"
-        ).format(amount, name)
+        u"coming year. \n\nSincerly, \n\nSimon Zinc Trumpet Harris, Esq. \n"
+        u"(Deceased)"
+        ).format(name, amount)
     print(msg)
 
 
@@ -105,7 +110,9 @@ def report():
         average = tot / n
         report_entry = (key, tot, n, average)
         report_list.append(report_entry)
-    report_list.sort(key=lambda report_entry: report_entry[1], reverse=True)
+    report_list.sort(
+        key=lambda report_entry: report_entry[1], reverse=True
+        )
     print(
         "{:22s} {:16s} {:20s} {:20s}\n".format(
             "Name", "Total Donations", "Number of Donations",
@@ -135,46 +142,50 @@ if __name__ == '__main__':
         "Create a Report" generates a formated list
         "list" prints a list of names and returns to original prompt
     """
+
     while True:
         user_input = safe_input(
             u"\nPlease select from the following options:\n"
             u"To send a thank you, enter '1'\n"
             u"To Create a Report, enter '2'\n"
             u"To see a list of donors, press 'L'\n"
-            u"To exit, press 'Q'\n"
-        )
+            u"To exit, press 'Q'\n\n-> "
+            )
         if user_input.lower() == u'q':
-                break
+            break
+
         elif user_input == '1':
             while True:
                 name = safe_input(
-                    u"\nEnter the Full Name of the Donor: \n ->"
-                )
+                    u"\nEnter the Full Name of the Donor: \n-> "
+                    )
                 if name.lower() == u"l":
                     for key in d:
                         print(key)
-                elif name.lower() == u"q":
+                elif name.lower() == u'q':
                     break
                 else:
                     if name not in d:
                         d[name] = []
-                        False
+                        amount = safe_input(
+                            u"\nPlease enter the donation amount: \n-> "
+                            )
                     else:
                         amount = safe_input(
-                            u"\nPlease enter the donation amount: \n"
-                        )
-                        False
+                            u"\nPlease enter the donation amount: \n-> "
+                            )
+                    donation_amount(name, amount)
+                    email_text(amount, name)
         elif user_input == '2':
-                report()
+            report()
         elif user_input.lower() == 'l':
             for key in d:
                 print(key)
         else:
             print(
-                u"\nThat is not a valid entry\n"
-                u"Please try again\n"
-            )
-            # return True
+                u"That is not a valid entry. \n"
+                u"Please try again. \n-> "
+                )
 
 
 #            __name__ == '__main__'
