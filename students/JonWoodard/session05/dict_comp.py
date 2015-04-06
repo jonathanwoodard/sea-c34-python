@@ -25,3 +25,7 @@ s2 = {n for n in range(21) if n % 2 == 0}
 s3 = {n for n in range(21) if n % 3 == 0}
 s4 = {n for n in range(21) if n % 4 == 0}
 
+
+def make_s(x, y=range(21)):
+    s_x = {n for n in y if n % x == 0}
+    print(s_x)
