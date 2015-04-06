@@ -18,3 +18,5 @@ hex_dict = dict(zip(list_of_numbers, hex_list))
 print(hex_dict)
 
 hex_dict_2 = {num: hex(num) for num in range(16)}
+
+hex_dict_a = {key: hex_dict[key].count('a') for key in hex_dict}
