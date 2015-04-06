@@ -10,3 +10,9 @@ new_string = (
     u"{salad} salad and {pasta}.").format(**food_prefs)
 
 print(new_string)
+
+
+list_of_numbers = [num for num in range(16)]
+hex_list = [hex(num) for num in list_of_numbers]
+hex_dict = dict(zip(list_of_numbers, hex_list))
+print(hex_dict)
