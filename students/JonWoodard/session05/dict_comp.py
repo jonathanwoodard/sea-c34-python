@@ -5,3 +5,8 @@ food_prefs = {"name": u"Jon",
               u"salad": u"caprese",
               u"pasta": u"ravioli"}
 
+new_string = (
+    u"{name} is from {city}, and he likes {cake} cake, {fruit}s, "
+    u"{salad} salad and {pasta}.").format(**food_prefs)
+
+print(new_string)
