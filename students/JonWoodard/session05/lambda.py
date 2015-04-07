@@ -12,7 +12,6 @@ list_of_functions = []
 
 
 def make_functions(n):
-    def f(n):
-        for i in range(n+1):
-            list_of_functions.append(lambda i: i + n)
-    print(list_of_functions)
+    for i in range(n+1):
+        list_of_functions.append(lambda x, y=i: x + y)
+    return list_of_functions
