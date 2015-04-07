@@ -10,8 +10,7 @@ def squirrel_party(cigars, weekend):
         if on a weekday, and otherwise on weekends, you
         can't have enough cigars.
     """
-    return (not weekend) and ((cigars >= 40) and (cigars <= 60)):
-        or weekend
+    return (not weekend) and ((cigars >= 40) and (cigars <= 60))or weekend
 
 if __name__ == "main":
     if (squirrel_party(40, False)):
@@ -21,5 +20,7 @@ if __name__ == "main":
 
     if (squirrel_party(70, True)):
         print("Sky's the limit!")
-    else
+    else:
         print("Sadface.")
+
+# I have not yet had time to try to condense this code.
