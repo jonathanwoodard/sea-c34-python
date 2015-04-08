@@ -40,26 +40,18 @@ print(fruit_2)
 
 # section 3
 
-y = len(fruit)
-for x in range(y):
-    item = fruit[x]
-    item = item.lower()
-    question = "Do you like " + str(item) + "? -->"
+copy = fruit[:]
+for item in fruit:
+    lower = item.lower()
+    question = "Do you like " + str(lower) + "? \n-->"
 
     like_fruit = raw_input(question)
     while like_fruit != "yes" and like_fruit != "no":
         print('Please answer "yes" or "no"')
         like_fruit = raw_input(question)
-    if like_fruit == "yes":
-        x += 1
-    else:
-        fruit.remove(fruit[x])
-        y = len(fruit)
-        x -= 1
-
-# this loop is not working properly
-
-print(fruit)
+    if like_fruit == "no":
+        copy.remove(item)
+print(copy)
 
 # section 4
 
