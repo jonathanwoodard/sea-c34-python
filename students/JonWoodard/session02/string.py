@@ -17,7 +17,8 @@ def string2():
     """
     # put some more code here
     another_string = "oh, boy, how about some more random text"
-    another_string.remove("random")
+    print(another_string)
+    print(another_string.replace(" random", ""))
 
 
 def string3():
@@ -26,7 +27,5 @@ def string3():
     """
     # another block of code here
     one_final_string = "this string has"
-    one_final_string.append = " even more text"
-    print one_final_string
-
-
+    one_final_string_part_2 = " even more text"
+    print(one_final_string + one_final_string_part_2)

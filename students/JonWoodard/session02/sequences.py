@@ -47,6 +47,5 @@ def tuples_as_sequences(t):
     """
     This function will do some stuff with tuples.
     """
-    t = 3, 1, 4, 3.14
+    t = (3, 1, 4, 3.14)
     print(t)
-
