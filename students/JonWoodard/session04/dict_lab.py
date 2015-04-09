@@ -12,6 +12,7 @@ values = dict_1.values()
 print(values)
 'cake' in dict_1
 'Mango' in values
+print(dict_1)
 
 
 # section 2: create lists from 1-15 in base 10 and hex
@@ -29,6 +30,7 @@ for item in values:
     count_a.append(item.count('a'))
 
 dict_3 = dict(zip(keys, count_a))
+print(dict_3)
 
 
 # section 4: create sets of numbers divisible by 2,3,4
@@ -46,8 +48,8 @@ print(s2)
 print(s3)
 print(s4)
 
-s3 <= s2
-s4 <= s2
+print(s3 <= s2)
+print(s4 <= s2)
 
 
 # section 5: create sets from strings
@@ -55,4 +57,4 @@ s5 = set('Python')
 s5.add('i')
 fs1 = frozenset('marathon')
 s5.union(fs1)
-s5.intersection(fs1)
+print(s5.intersection(fs1))
