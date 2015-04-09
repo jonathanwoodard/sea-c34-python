@@ -8,7 +8,7 @@ def dictionary_1():
     how_many = [3, 2, 11]
     in_the_zoo = {}
 
-    in_the_zoo = dict(zip(zoo_animals, how_many))   
+    in_the_zoo = dict(zip(zoo_animals, how_many))
     print(in_the_zoo)
 
     in_the_zoo.update({"lemurs": 14})
@@ -18,7 +18,7 @@ def dictionary_1():
     print(in_the_zoo)
 
 
-def dictionary_2(quest2):
+def dictionary_2():
     """
     Define another question.
     Question 2:
@@ -28,21 +28,23 @@ def dictionary_2(quest2):
     in_the_zoo.update({"unicorns": 3.14})
 
 
-def dictionary_3(quest3):
+def dictionary_3():
     """
     Define another question.
     Question 3:
         How do you access the items in a dictionary?
     """
-    in_the_zoo = {"lions":3, "tigers": 2, "monkeys": 11, "lemurs": 14}
-    in_the_zoo["lions"]
-    in_the_zoo.get("lemurs")
+    in_the_zoo = {"lions": 3, "tigers": 2, "monkeys": 11, "lemurs": 14}
+    print(in_the_zoo["lions"])
+    print(in_the_zoo.get("lemurs"))
 
 
-def dictionary_4(quest4):
+def dictionary_4():
     """
     Define a last question.
     Question 4:
         How do you remove things from a dictionary?
     """
-
+    in_the_zoo = {"lions": 3, "tigers": 2, "monkeys": 11, "lemurs": 14}
+    in_the_zoo.pop("tigers")
+    print(in_the_zoo)
