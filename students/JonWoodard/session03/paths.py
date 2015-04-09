@@ -11,9 +11,6 @@ True
 pth.absolute()
 PosixPath('/Users/Chris/PythonStuff/CodeFellowsClass/sea-f2-python-sept14/Examples/Session04')
 for f in pth.iterdir():
-             print f
+    print(f)
 junk2.txt
 junkfile.txt
-
-
-
