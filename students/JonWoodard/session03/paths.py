@@ -1,16 +1,8 @@
-def paths(quest1):
+def paths():
     """
     Define a question about paths.
     Question 1:
-        how do you change the path of a file?
+        Can you print the current working directory within a function?
     """
-import pathlib
-pth = pathlib.Path('./')
-pth.is_dir()
-True
-pth.absolute()
-PosixPath('/Users/Chris/PythonStuff/CodeFellowsClass/sea-f2-python-sept14/Examples/Session04')
-for f in pth.iterdir():
-    print(f)
-junk2.txt
-junkfile.txt
+    from pathlib import Path
+    print(Path.cwd())
