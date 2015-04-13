@@ -19,7 +19,8 @@ print(hex_dict)
 
 hex_dict_2 = {num: hex(num) for num in range(16)}
 
-hex_dict_a = {key: hex_dict[key].count('a') for key in hex_dict}
+food_prefs_a = {key: food_prefs[key].count('a') for key in food_prefs}
+print(food_prefs_a)
 
 s2 = {n for n in range(21) if n % 2 == 0}
 s3 = {n for n in range(21) if n % 3 == 0}
