@@ -111,3 +111,20 @@ class A(OneLineTag):
     def __init__(self, link, content, **kwargs):
         self.link = link
         OneLineTag.__init__(self, content, href=link, **kwargs)
+
+
+class Ul(Element):
+    tag = u"ul"
+
+
+class Li(Element):
+    tag = u"li"
+
+
+class H(OneLineTag):
+    tag = u"h"
+
+    def __init__(self, number, content, **kwargs):
+        self.number = number
+        self.tag = u"h{}".format(number)
+        OneLineTag.__init__(self, content, tag=self.tag, **kwargs)
