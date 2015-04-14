@@ -88,3 +88,18 @@ class OneLineTag(Element):
 
 class Title(OneLineTag):
     tag = u"title"
+
+
+class SelfClosingTag(Element):
+
+    def render(self, file_out, ind=u""):
+        file_out.write(
+            u"{indent}<{tag} />\n".format(indent=ind, tag=self.tag))
+
+
+class Hr(SelfClosingTag):
+    tag = u"hr"
+
+
+class Br(SelfClosingTag):
+    tag = u"br"
