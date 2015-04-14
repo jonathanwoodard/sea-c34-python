@@ -11,7 +11,7 @@ Python class example.
 class Element(object):
     """An HTML element."""
     tag = u"html"
-    indent = u"     "
+    indent = u"    "
 
     def __init__(self, content=None):
         self.children = [content] if content else []
@@ -32,7 +32,7 @@ class Element(object):
         #    "{indent}<{tag}>"
         #    ).format(indent=ind, tag=self.tag, content=self.content)
 
-        file_out.write(u"{indent}\n".format(indent=ind))
+        file_out.write(u"{indent}<{tag}>\n".format(indent=ind, tag=self.tag))
         for child in self.children:
             try:
                 child.render(file_out, self.indent + ind)
@@ -41,7 +41,7 @@ class Element(object):
                     u"{indent}{child}\n".format(
                         indent=self.indent, child=unicode(child))
                     )
-        file_out.write(u"{indent}\n".format(indent=ind))
+        file_out.write(u"{indent}</{tag}>\n".format(indent=ind, tag=self.tag))
 
 
 class Html(Element):
@@ -49,7 +49,7 @@ class Html(Element):
     tag = u"html"
 
     def render(self, file_out, ind=u""):
-        # file_out.write(self.header)
+        file_out.write(self.header)
         Element.render(self, file_out, ind)
 
 
