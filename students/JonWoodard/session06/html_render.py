@@ -13,29 +13,23 @@ class Element(object):
     tag = u"html"
     indent = u"    "
 
-    def __init__(self, content=None):
+    def __init__(self, content=None, **kwargs):
         self.children = [content] if content else []
-        # self.content = self.indent + str(self.content) if content else ""
+        self.attributes = kwargs
 
     def append(self, content):
-        """Append string to content."""
+        """Append content."""
         self.children.append(content)
-        # self.content += (
-        #    u"{indent}{str}\n".format(indent=self.indent, str=str(string))
-        #    )
 
     def render(self, file_out, ind=""):
-        """Render the tag and strings in content."""
-        # output = (
-        #    u"{indent}<{tag}>\n"
-        #    "{indent}{content}"
-        #    "{indent}<{tag}>"
-        #    ).format(indent=ind, tag=self.tag, content=self.content)
+        """Render content, including tags, indentation."""
 
         file_out.write(
-            u"{indent}<{tag}>\n"
-            .format(indent=ind, tag=self.tag)
-            )
+            u"{indent}<{tag}".format(indent=ind, tag=self.tag))
+        if self.attributes:
+            for key, value in self.attributes.items():
+                file_out.write(' {}="{}"'.format(key, value))
+        file_out.write(u">\n")
         for child in self.children:
             try:
                 child.render(file_out, self.indent + ind)
@@ -75,7 +69,11 @@ class OneLineTag(Element):
 
     def render(self, file_out, ind=u""):
         file_out.write(
-            u"{indent}<{tag}>".format(indent=ind, tag=self.tag))
+            u"{indent}<{tag}".format(indent=ind, tag=self.tag))
+        if self.attributes:
+            for key, value in self.attributes.items():
+                file_out.write(' {}="{}"'.format(key, value))
+        file_out.write(u">")
         for child in self.children:
             try:
                 child.render(file_out)
