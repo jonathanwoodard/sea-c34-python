@@ -105,6 +105,13 @@ class Br(SelfClosingTag):
     tag = u"br"
 
 
+class Meta(OneLineTag):
+    tag = "meta"
+
+    def __init__(self, content=None, **kwargs):
+        OneLineTag.__init__(self, content, **kwargs)
+
+
 class A(OneLineTag):
     tag = u"a"
 
