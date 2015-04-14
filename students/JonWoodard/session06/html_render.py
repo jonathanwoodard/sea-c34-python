@@ -32,16 +32,21 @@ class Element(object):
         #    "{indent}<{tag}>"
         #    ).format(indent=ind, tag=self.tag, content=self.content)
 
-        file_out.write(u"{indent}<{tag}>\n".format(indent=ind, tag=self.tag))
+        file_out.write(
+            u"{indent}<{tag}>\n"
+            .format(indent=ind, tag=self.tag)
+            )
         for child in self.children:
             try:
                 child.render(file_out, self.indent + ind)
             except AttributeError:
                 file_out.write(
-                    u"{indent}{child}\n".format(
-                        indent=self.indent, child=unicode(child))
+                    u"{indent}{child}\n"
+                    .format(indent=self.indent + ind, child=unicode(child))
                     )
-        file_out.write(u"{indent}</{tag}>\n".format(indent=ind, tag=self.tag))
+        file_out.write(
+            u"{indent}</{tag}>\n"
+            .format(indent=ind, tag=self.tag))
 
 
 class Html(Element):
@@ -59,3 +64,29 @@ class Body(Element):
 
 class P(Element):
     tag = u"p"
+
+
+class Head(Element):
+    tag = u"head"
+
+
+class OneLineTag(Element):
+    indent = u""
+
+    def render(self, file_out, ind=u""):
+        file_out.write(
+            u"{indent}<{tag}>".format(indent=ind, tag=self.tag))
+        for child in self.children:
+            try:
+                child.render(file_out)
+            except AttributeError:
+                file_out.write(
+                    u"{child}"
+                    .format(child=unicode(child))
+                    )
+        file_out.write(
+            u"</{tag}>\n".format(tag=self.tag))
+
+
+class Title(OneLineTag):
+    tag = u"title"
