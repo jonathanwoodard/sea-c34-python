@@ -151,3 +151,24 @@ class H(OneLineTag):
         self.number = number
         self.tag = u"h{}".format(number)
         OneLineTag.__init__(self, content, tag=self.tag, **kwargs)
+
+    def render(self, file_out, ind=""):
+        """Render content, including tags, indentation."""
+
+        file_out.write(
+            u"{indent}<{tag}>".format(indent=ind, tag=self.tag))
+#        if self.attributes:
+#            for key, value in self.attributes.items():
+#                file_out.write(' {}="{}"'.format(key, value))
+#        file_out.write(u">\n")
+        for child in self.children:
+            try:
+                child.render(file_out, self.indent + ind)
+            except AttributeError:
+                file_out.write(
+                    u"{child}"
+                    .format(child=unicode(child))
+                    )
+        file_out.write(
+            u"</{tag}>\n"
+            .format(tag=self.tag))
