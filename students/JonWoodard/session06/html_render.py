@@ -105,11 +105,27 @@ class Br(SelfClosingTag):
     tag = u"br"
 
 
-class Meta(OneLineTag):
+class Meta(SelfClosingTag):
     tag = "meta"
 
     def __init__(self, content=None, **kwargs):
-        OneLineTag.__init__(self, content, **kwargs)
+        SelfClosingTag.__init__(self, content, **kwargs)
+
+    def render(self, file_out, ind=u""):
+        file_out.write(
+            u"{indent}<{tag}".format(indent=ind, tag=self.tag))
+        if self.attributes:
+            for key, value in self.attributes.items():
+                file_out.write(' {}="{}"'.format(key, value))
+        for child in self.children:
+            try:
+                child.render(file_out)
+            except AttributeError:
+                file_out.write(
+                    u"{child}"
+                    .format(child=unicode(child))
+                    )
+        file_out.write(u" />\n")
 
 
 class A(OneLineTag):
