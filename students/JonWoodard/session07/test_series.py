@@ -4,14 +4,14 @@ from series import fibonacci
 from series import lucas
 
 
-def test_fib(n):
+def test_fib():
 
     assert fibonacci(2) == 1
     assert fibonacci(7) == 8
     assert fibonacci(27) == 121393
 
 
-def test_luc(n):
+def test_luc():
 
     assert lucas(2) == 1
     assert lucas(7) == 18
