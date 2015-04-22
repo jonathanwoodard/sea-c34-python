@@ -2,9 +2,10 @@
 # section 1
 
 master_fruit = ["Apples", "Pears", "Oranges", "Peaches"]
+fruit_copy = []
 
 """
-def fruit_1():
+def fruit_1(new_fruit=None):
     fruit = master_fruit[:]
     print(fruit)
     new_fruit = raw_input("Please enter a new fruit-->")
@@ -25,8 +26,8 @@ def fruit_1():
     for item in fruit:
         if item[0] == "P":
             print(item)
-
-
+"""
+"""
 # section 2
 fruit = master_fruit[:]
 print(fruit)
@@ -63,17 +64,18 @@ print(copy)
 
 # section 4
 def fruit_2():
-    # fruit_copy = []
-    fruit_copy = master_fruit[:]
-    for item in master_fruit:
-        newitem = item[::-1]
-        while item in fruit_copy:
-            i = fruit_copy.index(item)
-            fruit_copy[i] = newitem
+    fruit_copy = [item[::-1] for item in master_fruit]
+    # fruit_copy = master_fruit[:]
+    # for item in master_fruit:
+    #    newitem = item[::-1]
+    #    fruit_copy.append(newitem)
+    #    # while item in fruit_copy:
+    #    #    i = fruit_copy.index(item)
+    #    #    fruit_copy[i] = newitem
     fruit_copy.pop(-1)
-    return fruit_copy
+    # return fruit_copy
     print(master_fruit, fruit_copy)
-# fruit_2()
+fruit_2()
 
 # if __name__ == "__main__":
 # add some assert statements to test
